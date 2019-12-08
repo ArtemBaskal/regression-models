@@ -95,10 +95,26 @@ fit.6 <- lm(Y ~ poly(X1, 6), data = df)
 anova(fit.1,fit.2,fit.3,fit.4,fit.5,fit.6)
 #Наиболее хорошая их всех полиномиальных моделей - модель пятой степень, так как она имеет наибольшую степень из значимых моделей
 #3
-"На листочке
-h<-4
-1/nh * sum ((x - x0) / h)
-[3,5,7,9,9,10,11,13,17,19]"
+d1 <- density(c(3,5,7,9,9,10,11,13,17,19), kernel="epanechnikov")
+
+plot(d1)
+dens_5 <- approx(d1$x, d1$y, xout=5)$y
+abline(v = dens_10, col = "red")
+
+plot(d1)
+dens_10 <-  approx(d1$x, d1$y, xout=10)$y
+abline(v = dens_5, col = "blue")
+
+
+d2 <- density(c(3,5,7,9,9,10,11,13,17,19), kernel="gaussian")
+
+plot(d2)
+dens_5 <- approx(d2$x, d2$y, xout=5)$y
+abline(v = dens_10, col = "red")
+
+plot(d1)
+dens_10 <- approx(d2$x, d2$y, xout=10)$y
+abline(v = dens_5, col = "blue")
 #4
 install.packages('ISLR')
 library('ISLR')
