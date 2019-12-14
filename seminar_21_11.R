@@ -86,6 +86,7 @@ coef(summary(fit))
 agelims = range(Wage$age)
 age.grid = seq(from=agelims[1], to=agelims[2])
 preds = predict(fit, newdata = list(age = age.grid),se = TRUE)
+preds
 se.bands = cbind(preds$fit + preds$se.fit * 2, preds$fit - preds$se.fit*2 ) 
 #(2 - стандартная ошика, в проверке гипотез делили бы еще на корень из n)
 plot(Wage$age, Wage$wage, xlim = agelims, cex=.5, col = 'darkgrey')
